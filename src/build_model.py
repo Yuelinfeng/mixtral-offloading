@@ -84,7 +84,7 @@ def replace_attn_layers(
         return layer
 
     for layer in model.model.layers:
-        layer.block_sparse_moe.gate = nn.Linear(
+        layer.mlp.gate = nn.Linear(
             config.hidden_size,
             config.num_local_experts,
             dtype=torch.float16,
@@ -174,23 +174,22 @@ def build_model(
 
     state_dict_00 = load_00_expert_state_dict(state_path, device)
 
+    model_config = AutoConfig.from_pretrained(model_name)
     def _make_module():
-        config = AutoConfig.from_pretrained(model_name)
-        expert = make_empty_expert(config, quant_config)
+        expert = make_empty_expert(model_config, quant_config)
         expert.load_state_dict(state_dict_00)
         return MixtralExpertWrapper(expert, device=device)
 
+    # Create a skeleton config with 0 experts to save memory for the base model
+    skeleton_config = AutoConfig.from_pretrained(
+        model_name,
+        num_local_experts=0,
+        torch_dtype=torch.float16,
+        device_map=device,
+    )
     with device, with_default_dtype(torch.float16):
-        model = MixtralForCausalLM(
-            AutoConfig.from_pretrained(
-                model_name,
-                num_local_experts=0,
-                torch_dtype=torch.float16,
-                device_map=device,
-            ),
-        )
+        model = MixtralForCausalLM(skeleton_config)
 
-    model_config = AutoConfig.from_pretrained(model_name)
     replace_attn_layers(model, model_config, quant_config, device)
     state_index_path = os.path.join(state_path, "model.safetensors.index.json")
     with open(state_index_path) as f:
@@ -200,7 +199,13 @@ def build_model(
         state_path,
         weight_map["model.embed_tokens.weight"],
     )
-    model.load_state_dict(load_file(trunk_state_path, device=str(device)), strict=True)
+    import gc
+    state_dict = load_file(trunk_state_path, device=str(device))
+    state_dict = {k.replace("block_sparse_moe", "mlp"): v for k, v in state_dict.items()}
+    model.load_state_dict(state_dict, strict=False)
+    del state_dict
+    gc.collect()
+    torch.cuda.empty_cache()
 
     expert_cache = GraphExpertCache(
         make_module=_make_module,
@@ -210,10 +215,10 @@ def build_model(
     )
     for layer_idx in trange(model_config.num_hidden_layers, desc="Loading experts"):
         curr_layer = model.model.layers[layer_idx]
-        curr_layer.block_sparse_moe = SparseMoeWrapper(
+        curr_layer.mlp = SparseMoeWrapper(
             model_config,
             layer_idx,
-            curr_layer.block_sparse_moe.gate,
+            curr_layer.mlp.gate,
             expert_cache,
         )
 
@@ -236,7 +241,9 @@ def build_model(
             )
 
             del expert_wrapper
-            torch.cuda.synchronize(device)
-            torch.cuda.empty_cache()
+            
+        # Clean up once per layer instead of per expert
+        torch.cuda.synchronize(device)
+        torch.cuda.empty_cache()
 
     return model

@@ -311,5 +311,15 @@ class SparseMoeWrapper(nn.Module):
             # However `index_add_` only support torch tensors for indexing so we'll use
             # the `top_x` tensor here.
             final_hidden_states.index_add_(0, top_x, current_hidden_states.to(hidden_states.dtype))
+            final_hidden_states.index_add_(0, top_x, current_hidden_states.to(hidden_states.dtype))
         final_hidden_states = final_hidden_states.reshape(batch_size, sequence_length, hidden_dim)
-        return final_hidden_states, router_logits
+        
+        # Graph-Guided Prefetching for the NEXT layer
+        # We predict what the next layer will need based on current activation
+        if hasattr(self.experts, 'predict_next_layer') and hasattr(self.experts, 'prefetch_experts'):
+            # gating_probs is (Batch, Num_Experts)
+            predicted_uids = self.experts.predict_next_layer(self.layer_id, gating_probs)
+            if predicted_uids:
+                self.experts.prefetch_experts(predicted_uids)
+                
+        return final_hidden_states

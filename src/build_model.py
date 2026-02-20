@@ -18,6 +18,7 @@ from tqdm.auto import trange
 from hqq.core.quantize import BaseQuantizeConfig
 
 from .expert_cache import ExpertCache
+from .graph_expert_cache import GraphExpertCache
 from .expert_wrapper import MixtralExpertWrapper
 from .custom_layers import (
     HQQLinearTritonSavable,
@@ -201,7 +202,7 @@ def build_model(
     )
     model.load_state_dict(load_file(trunk_state_path, device=str(device)), strict=True)
 
-    expert_cache = ExpertCache(
+    expert_cache = GraphExpertCache(
         make_module=_make_module,
         main_size=offload_config.main_size,
         offload_size=offload_config.offload_size,

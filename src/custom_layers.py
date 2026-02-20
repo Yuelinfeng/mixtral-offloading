@@ -276,6 +276,7 @@ class SparseMoeWrapper(nn.Module):
         router_logits = self.gate(hidden_states)
 
         routing_weights = F.softmax(router_logits, dim=1, dtype=torch.float)
+        gating_probs = routing_weights
         routing_weights, selected_experts = torch.topk(routing_weights, self.top_k, dim=-1)
         routing_weights /= routing_weights.sum(dim=-1, keepdim=True)
         # we cast back to the input dtype
@@ -293,7 +294,7 @@ class SparseMoeWrapper(nn.Module):
 
         # Loop over all available experts in the model and perform the computation on each expert
         for (_layer_index, expert_idx), expert_layer in self.experts.load_experts(
-                *((self.layer_id, expert_idx) for expert_idx in active_experts), unordered=True):
+                *((self.layer_id, expert_idx) for expert_idx in active_experts), unordered=True, gating_probs=gating_probs):
             idx, top_x = torch.where(expert_mask[expert_idx])
             assert top_x.shape[0] > 0
 

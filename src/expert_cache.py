@@ -65,13 +65,13 @@ class ExpertCache:
 
         assert self.module_size is not None
         self.offloaded_storages = [
-            torch.UntypedStorage(self.module_size).pin_memory(self.device) for _ in range(offload_size)]
+            torch.UntypedStorage(self.module_size).pin_memory() for _ in range(offload_size)]
         self.offloaded_infos: List[Optional[ExpertInfo]] = [None for _ in range(offload_size)]
 
         # temporary storage to shave off latency
         self.device_expert_buffers = deque([self._check_module(make_module()) for _ in range(buffer_size)])
         self.offloaded_storage_buffers = deque([
-            torch.UntypedStorage(self.module_size).pin_memory(self.device) for _ in range(buffer_size)])
+            torch.UntypedStorage(self.module_size).pin_memory() for _ in range(buffer_size)])
         self.group_infos: Dict[int, EvictionGroupInfo] = defaultdict(EvictionGroupInfo)
 
     def _check_module(self, module: MixtralExpertWrapper):
@@ -118,7 +118,7 @@ class ExpertCache:
         raise ValueError("Cache is full")
 
     def load_experts(
-            self, *uids: ExpertUID, unordered: bool = False) -> Iterator[Tuple[ExpertUID, MixtralExpertWrapper]]:
+            self, *uids: ExpertUID, unordered: bool = False, gating_probs: Optional[torch.Tensor] = None) -> Iterator[Tuple[ExpertUID, MixtralExpertWrapper]]:
         """
         :example:
         >>> for uid, expert in expert_cache.load_experts(*list_of_uids, unordered=True):
@@ -128,17 +128,26 @@ class ExpertCache:
         :param uids: iterate over the specified expert uids. Same uids as in add_expert
         :param unordered: if True, allows cache to iterate experts in arbitrary order
             The order is chosen to minimize the total wait time.
+        :param gating_probs: (Optional) raw gating probabilities for graph-based strategies.
         :returns: an iterator that yields (uid, expert) pairs, only usable inside the for loop
 
         """
         assert len(set(uids)) == len(uids)
         assert not self.active, "already loading experts; buffers are busy"
         if unordered:  # yield non-offloaded experts first
-            uids = sorted(uids, key=lambda uid: self.registered_experts[uid].offloaded)
+            try:
+                uids = sorted(uids, key=lambda uid: self.registered_experts[uid].offloaded)
+            except KeyError: # Handle case where uids might not be registered yet? Unlikely.
+                 pass
+
         infos = [self.registered_experts[uid] for uid in uids]
 
         assert len(set(info.eviction_group for info in infos)) == 1, "experts must be in the same evicton group"
         eviction_group = self.group_infos[infos[0].eviction_group]
+        
+        # Base implementation ignores gating_probs, but subclasses use it.
+        # We need to make sure we don't break existing logic.
+        
         for info in infos:
             eviction_group.mark_used(info)
 
@@ -152,7 +161,7 @@ class ExpertCache:
             infos_to_load = deque([info for info in infos if info.offloaded])
             infos_in_loading = deque([])
             experts_in_loading = deque([])
-            window_size = min(len(self.device_expert_buffers) - 1,
+            window_size = min(len(self.device_expert_buffers),
                               len(eviction_group.main_infos),
                               len(infos_to_load))
             for _ in range(window_size):

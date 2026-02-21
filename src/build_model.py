@@ -169,6 +169,9 @@ def build_model(
     quant_config: QuantConfig,
     offload_config: OffloadConfig,
     state_path: str,
+    cache_policy: str = "ebco",
+    lambda_weight: float = 1.0,
+    use_prefetch: bool = False,
 ):
     model_name = "mistralai/Mixtral-8x7B-Instruct-v0.1"
 
@@ -207,12 +210,44 @@ def build_model(
     gc.collect()
     torch.cuda.empty_cache()
 
-    expert_cache = GraphExpertCache(
-        make_module=_make_module,
-        main_size=offload_config.main_size,
-        offload_size=offload_config.offload_size,
-        buffer_size=offload_config.buffer_size,
-    )
+    # Initialize appropriate cache based on policy
+    if cache_policy == "ebco":
+        from .graph_expert_cache import GraphExpertCache
+        expert_cache = GraphExpertCache(
+            make_module=_make_module,
+            main_size=offload_config.main_size,
+            offload_size=offload_config.offload_size,
+            buffer_size=offload_config.buffer_size,
+            lambda_weight=lambda_weight,
+        )
+    elif cache_policy == "lru":
+        from .expert_cache import ExpertCache
+        expert_cache = ExpertCache(
+            make_module=_make_module,
+            main_size=offload_config.main_size,
+            offload_size=offload_config.offload_size,
+            buffer_size=offload_config.buffer_size,
+        )
+    elif cache_policy == "embed":
+        from .embedding_expert_cache import EmbeddingExpertCache
+        expert_cache = EmbeddingExpertCache(
+            make_module=_make_module,
+            main_size=offload_config.main_size,
+            offload_size=offload_config.offload_size,
+            buffer_size=offload_config.buffer_size,
+        )
+    elif cache_policy == "markov":
+        from .markov_expert_cache import MarkovExpertCache
+        expert_cache = MarkovExpertCache(
+            make_module=_make_module,
+            main_size=offload_config.main_size,
+            offload_size=offload_config.offload_size,
+            buffer_size=offload_config.buffer_size,
+        )
+    else:
+        raise ValueError(f"Unknown cache policy: {cache_policy}")
+        
+    expert_cache.use_prefetch = use_prefetch
     for layer_idx in trange(model_config.num_hidden_layers, desc="Loading experts"):
         curr_layer = model.model.layers[layer_idx]
         curr_layer.mlp = SparseMoeWrapper(

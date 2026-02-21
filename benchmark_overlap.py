@@ -1,7 +1,6 @@
 
 import sys
 import time
-import argparse
 import torch
 from transformers import AutoConfig, AutoTokenizer, TextStreamer
 from src.build_model import build_model, OffloadConfig, QuantConfig
@@ -59,19 +58,9 @@ offload_config = OffloadConfig(
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--policy", type=str, default="ebco", choices=["lru", "ebco", "embed", "markov"])
-    parser.add_argument("--lambda_weight", type=float, default=1.0)
-    parser.add_argument("--use_prefetch", action="store_true")
-    args = parser.parse_args()
-
     print(f"正在配置模型运行环境...")
     print(f"设备: {device}")
     print(f"Offload 配置: Main={offload_config.main_size}, Offload={offload_config.offload_size}")
-    print(f"缓存策略 (Policy): {args.policy.upper()}")
-    if args.policy == "ebco":
-        print(f"Lambda 权重: {args.lambda_weight}")
-        print(f"启用预取 (Prefetch): {args.use_prefetch}")
     
     # 1. 加载 Tokenizer
     print("加载 Tokenizer...")
@@ -84,12 +73,7 @@ def main():
     # 2. 构建模型 (Build Model)
     print("构建模型中 (这可能需要一些时间)...")
     try:
-        model = build_model(
-            device, quant_config, offload_config, state_path, 
-            cache_policy=args.policy, 
-            lambda_weight=args.lambda_weight, 
-            use_prefetch=args.use_prefetch
-        )
+        model = build_model(device, quant_config, offload_config, state_path, cache_policy="ebco")
     except Exception as e:
         print(f"构建模型失败: {e}")
         print("提示: 请确保 'state_path' 指向正确的权重目录。")

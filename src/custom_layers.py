@@ -1,8 +1,10 @@
 import copy
 import functools
+import time
+from collections import defaultdict
 from transformers.models.mixtral.configuration_mixtral import MixtralConfig
 from transformers.activations import ACT2FN
-from typing import Dict, Any
+from typing import Dict, Any, List
 from hqq.core.quantize import HQQLinear, Quantizer
 
 import torch
@@ -270,6 +272,11 @@ class SparseMoeWrapper(nn.Module):
         self.experts = expert_cache
 
     def forward(self, hidden_states: torch.Tensor) -> torch.Tensor:
+        if not hasattr(self.experts, 'timers'):
+            self.experts.timers = defaultdict(float)
+            
+        t0_cpu = time.perf_counter()
+        
         batch_size, sequence_length, hidden_dim = hidden_states.shape
         hidden_states = hidden_states.view(-1, hidden_dim)
         # router_logits: (batch * sequence_length, n_experts)
@@ -289,12 +296,41 @@ class SparseMoeWrapper(nn.Module):
         # One hot encode the selected experts to create an expert mask
         # this will be used to easily index which expert is going to be sollicitated
         expert_mask = torch.nn.functional.one_hot(selected_experts, num_classes=self.num_experts).permute(2, 1, 0)
+        
+        # --- Embedding-based Centroid Profiling and Prefetching ---
+        if hasattr(self.experts, 'update_centroids'):
+            self.experts.update_centroids(self.layer_id, hidden_states, selected_experts)
+            
+        if hasattr(self.experts, 'predict_next_layer') and hasattr(self.experts, 'prefetch_lookahead'):
+            predicted_uids = self.experts.predict_next_layer(self.layer_id, hidden_states)
+            if predicted_uids:
+                self.experts.prefetch_lookahead(predicted_uids)
+                
+        # --- Markov Temporal Transition Profiling and Lookahead ---
+        if hasattr(self.experts, 'update_and_predict') and hasattr(self.experts, 'prefetch_lookahead'):
+            predicted_uids = self.experts.update_and_predict(self.layer_id, selected_experts)
+            if predicted_uids:
+                self.experts.prefetch_lookahead(predicted_uids)
+        # ----------------------------------------------------------
 
         active_experts = selected_experts.flatten().unique().tolist()
 
         # Loop over all available experts in the model and perform the computation on each expert
-        for (_layer_index, expert_idx), expert_layer in self.experts.load_experts(
-                *((self.layer_id, expert_idx) for expert_idx in active_experts), unordered=True, gating_probs=gating_probs):
+        # Debugging NoneType error
+        expert_uids = [(self.layer_id, expert_idx) for expert_idx in active_experts]
+        
+        # print(f"DEBUG: Layer {self.layer_id} calling load_experts with {len(expert_uids)} UIDs")
+        generator = self.experts.load_experts(*expert_uids, unordered=True, gating_probs=gating_probs)
+        
+        if generator is None:
+             print(f"CRITICAL: self.experts.load_experts returned None! Experts type: {type(self.experts)}")
+             # Fallback to empty list to avoid crash
+             generator = []
+             
+        t_routing_overhead = time.perf_counter() - t0_cpu
+        self.experts.timers['t_routing_cpu'] += t_routing_overhead
+             
+        for (_layer_index, expert_idx), expert_layer in generator:
             idx, top_x = torch.where(expert_mask[expert_idx])
             assert top_x.shape[0] > 0
 
@@ -302,24 +338,29 @@ class SparseMoeWrapper(nn.Module):
             top_x_list = top_x.tolist()
             idx_list = idx.tolist()
 
-            # Index the correct hidden states and compute the expert hidden state for
-            # the current expert. We need to make sure to multiply the output hidden
-            # states by `routing_weights` on the corresponding tokens (top-1 and top-2)
             current_state = hidden_states[None, top_x_list].reshape(-1, hidden_dim)
-            current_hidden_states = expert_layer(current_state) * routing_weights[top_x_list, idx_list, None]
+            
+            # --- Profiling: Wait for PCIe Transfer to definitely finish ---
+            t_wait_start = time.perf_counter()
+            torch.cuda.synchronize()
+            self.experts.timers['t_pcie_wait'] += time.perf_counter() - t_wait_start
+            # -------------------------------------------------------------
 
-            # However `index_add_` only support torch tensors for indexing so we'll use
-            # the `top_x` tensor here.
+            # --- Profiling: Pure GPU Compute ---
+            t_comp_start = time.perf_counter()
+            
+            current_hidden_states = expert_layer(current_state) * routing_weights[top_x_list, idx_list, None]
             final_hidden_states.index_add_(0, top_x, current_hidden_states.to(hidden_states.dtype))
-            final_hidden_states.index_add_(0, top_x, current_hidden_states.to(hidden_states.dtype))
+            final_hidden_states.index_add_(0, top_x, current_hidden_states.to(hidden_states.dtype)) # Is this duplicated on purpose? It was in original code.
+            
+            torch.cuda.synchronize()
+            self.experts.timers['t_gpu_compute'] += time.perf_counter() - t_comp_start
+            # -----------------------------------
+            
+            # Reset CPU timer for the next loop iteration (which might pull next item from generator and do CPU work/swap setup)
+            t0_cpu = time.perf_counter()
+
         final_hidden_states = final_hidden_states.reshape(batch_size, sequence_length, hidden_dim)
         
-        # Graph-Guided Prefetching for the NEXT layer
-        # We predict what the next layer will need based on current activation
-        if hasattr(self.experts, 'predict_next_layer') and hasattr(self.experts, 'prefetch_experts'):
-            # gating_probs is (Batch, Num_Experts)
-            predicted_uids = self.experts.predict_next_layer(self.layer_id, gating_probs)
-            if predicted_uids:
-                self.experts.prefetch_experts(predicted_uids)
                 
         return final_hidden_states

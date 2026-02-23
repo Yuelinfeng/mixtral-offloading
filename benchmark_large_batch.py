@@ -16,17 +16,19 @@ except ImportError as e:
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 def main():
-    parser = argparse.ArgumentParser(description="Large Batch Prefill Benchmark for EBCO vs LRU")
-    parser.add_argument('--policy', type=str, default='ebco', choices=['lru', 'ebco'], help='Cache replacement policy')
+    parser = argparse.ArgumentParser(description="Large Batch Prefill Benchmark for EBCO vs LRU vs Markov")
+    parser.add_argument('--policy', type=str, default='ebco', choices=['lru', 'ebco', 'markov'], help='Cache replacement policy')
     parser.add_argument('--main_size', type=int, default=128, help='Global main buffer size (128 = 4 experts per layer on avg)')
     parser.add_argument('--seq_len', type=int, default=4096, help='Length of the massive input sequence (simulates large batch)')
-    args = parser.add_argument_group()
+    parser.add_argument('--admission_threshold', type=float, default=0.0, help='Probability threshold for Markov Admission Control (only for policy=markov)')
     args = parser.parse_args()
 
     print(f"=== 大型 Batch (长序列预填充) 测试启动 ===")
     print(f"策略: {args.policy.upper()}")
     print(f"全局缓存容量: {args.main_size} 专家")
     print(f"目标序列长度: {args.seq_len} Tokens")
+    if args.policy == 'markov':
+        print(f"Markov 准入控制阈值: {args.admission_threshold}")
     print("=========================================\n")
 
     model_name = "mistralai/Mixtral-8x7B-Instruct-v0.1"
@@ -56,7 +58,7 @@ def main():
     tokenizer = AutoTokenizer.from_pretrained(model_name)
 
     print(f"构建模型 (Policy: {args.policy})...")
-    model = build_model(device, quant_config, offload_config, state_path, cache_policy=args.policy)
+    model = build_model(device, quant_config, offload_config, state_path, cache_policy=args.policy, admission_threshold=args.admission_threshold)
     print("模型构建完成！")
 
     print(f"\n加载 Wikitext-2 构造大段连续长文本...")
@@ -81,9 +83,9 @@ def main():
     # 模拟真实的高并发推断系统 (如 vLLM)，我们会将输入切分为 Chunk (例如每 256 个 Token 一批)
     # 连续灌入，这样才能考察出缓存策略在时间序列上的“留存能力”。
     
-    chunk_size = 256
-    num_chunks = actual_len // chunk_size
-    print(f"切分策略: 将序列划分为 {num_chunks} 个微序列 (Micro-Batches), 每个长度 {chunk_size}")
+    chunk_size = min(256, actual_len)
+    num_chunks = (actual_len + chunk_size - 1) // chunk_size
+    print(f"切分策略: 将序列划分为 {num_chunks} 个微序列 (Micro-Batches), 每个最长 {chunk_size}")
     
     start_time = time.time()
     
@@ -112,13 +114,17 @@ def main():
     try:
         cache = model.model.layers[0].mlp.experts
         
+        total_bypassed = 0
         for group_info in cache.group_infos.values():
             hits += group_info.hits
             misses += group_info.misses
+            total_bypassed += getattr(group_info, 'bypassed_count', 0)
             
         print("\n=== 缓存战报 ===")
         print(f"总命中 (Hits): {hits}")
         print(f"总未命中 (Misses): {misses}")
+        if total_bypassed > 0:
+            print(f"大批量长尾专家被概率滤镜拦截 (Bypassed): {total_bypassed}")
         if hits + misses > 0:
             print(f"缓存命中率: {hits / (hits + misses) * 100:.2f}%")
             

@@ -1,0 +1,2372 @@
+{
+  "Mixtral": {
+    "delta": 0.849833338521421,
+    "experts": 8,
+    "sweeps": [
+      {
+        "batch_size": 16,
+        "capacity": 1,
+        "normalized_capacity": 0.125,
+        "lru": {
+          "hits": 0,
+          "misses": 21707,
+          "evictions": 21675,
+          "bypassed": 0,
+          "churn_per_step_layer": 6.7734375,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 0,
+          "misses": 21707,
+          "evictions": 20243,
+          "bypassed": 1432,
+          "churn_per_step_layer": 6.3259375,
+          "miss_rate": 1.0
+        }
+      },
+      {
+        "batch_size": 16,
+        "capacity": 2,
+        "normalized_capacity": 0.25,
+        "lru": {
+          "hits": 0,
+          "misses": 21707,
+          "evictions": 21643,
+          "bypassed": 0,
+          "churn_per_step_layer": 6.7634375,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 0,
+          "misses": 21707,
+          "evictions": 21272,
+          "bypassed": 371,
+          "churn_per_step_layer": 6.6475,
+          "miss_rate": 1.0
+        }
+      },
+      {
+        "batch_size": 16,
+        "capacity": 3,
+        "normalized_capacity": 0.375,
+        "lru": {
+          "hits": 7,
+          "misses": 21700,
+          "evictions": 21604,
+          "bypassed": 0,
+          "churn_per_step_layer": 6.75125,
+          "miss_rate": 0.999677523379555
+        },
+        "markov": {
+          "hits": 9,
+          "misses": 21698,
+          "evictions": 21540,
+          "bypassed": 62,
+          "churn_per_step_layer": 6.73125,
+          "miss_rate": 0.999585387202285
+        }
+      },
+      {
+        "batch_size": 16,
+        "capacity": 4,
+        "normalized_capacity": 0.5,
+        "lru": {
+          "hits": 113,
+          "misses": 21594,
+          "evictions": 21466,
+          "bypassed": 0,
+          "churn_per_step_layer": 6.708125,
+          "miss_rate": 0.9947943059842447
+        },
+        "markov": {
+          "hits": 132,
+          "misses": 21575,
+          "evictions": 21388,
+          "bypassed": 59,
+          "churn_per_step_layer": 6.68375,
+          "miss_rate": 0.9939190123001796
+        }
+      },
+      {
+        "batch_size": 16,
+        "capacity": 5,
+        "normalized_capacity": 0.625,
+        "lru": {
+          "hits": 1111,
+          "misses": 20596,
+          "evictions": 20436,
+          "bypassed": 0,
+          "churn_per_step_layer": 6.38625,
+          "miss_rate": 0.9488183535265122
+        },
+        "markov": {
+          "hits": 1221,
+          "misses": 20486,
+          "evictions": 20271,
+          "bypassed": 55,
+          "churn_per_step_layer": 6.3346875,
+          "miss_rate": 0.943750863776662
+        }
+      },
+      {
+        "batch_size": 16,
+        "capacity": 6,
+        "normalized_capacity": 0.75,
+        "lru": {
+          "hits": 5674,
+          "misses": 16033,
+          "evictions": 15841,
+          "bypassed": 0,
+          "churn_per_step_layer": 4.9503125,
+          "miss_rate": 0.7386096650849956
+        },
+        "markov": {
+          "hits": 5763,
+          "misses": 15944,
+          "evictions": 15697,
+          "bypassed": 55,
+          "churn_per_step_layer": 4.9053125,
+          "miss_rate": 0.7345096051964805
+        }
+      },
+      {
+        "batch_size": 16,
+        "capacity": 7,
+        "normalized_capacity": 0.875,
+        "lru": {
+          "hits": 14377,
+          "misses": 7330,
+          "evictions": 7106,
+          "bypassed": 0,
+          "churn_per_step_layer": 2.220625,
+          "miss_rate": 0.33767908969456856
+        },
+        "markov": {
+          "hits": 14427,
+          "misses": 7280,
+          "evictions": 7002,
+          "bypassed": 54,
+          "churn_per_step_layer": 2.188125,
+          "miss_rate": 0.33537568526281847
+        }
+      },
+      {
+        "batch_size": 16,
+        "capacity": 8,
+        "normalized_capacity": 1.0,
+        "lru": {
+          "hits": 21451,
+          "misses": 256,
+          "evictions": 0,
+          "bypassed": 0,
+          "churn_per_step_layer": 0.0,
+          "miss_rate": 0.01179343069056065
+        },
+        "markov": {
+          "hits": 21402,
+          "misses": 305,
+          "evictions": 0,
+          "bypassed": 49,
+          "churn_per_step_layer": 0.0,
+          "miss_rate": 0.014050767033675773
+        }
+      },
+      {
+        "batch_size": 64,
+        "capacity": 1,
+        "normalized_capacity": 0.125,
+        "lru": {
+          "hits": 0,
+          "misses": 25495,
+          "evictions": 25463,
+          "bypassed": 0,
+          "churn_per_step_layer": 7.9571875,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 0,
+          "misses": 25495,
+          "evictions": 23458,
+          "bypassed": 2005,
+          "churn_per_step_layer": 7.330625,
+          "miss_rate": 1.0
+        }
+      },
+      {
+        "batch_size": 64,
+        "capacity": 2,
+        "normalized_capacity": 0.25,
+        "lru": {
+          "hits": 0,
+          "misses": 25495,
+          "evictions": 25431,
+          "bypassed": 0,
+          "churn_per_step_layer": 7.9471875,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 0,
+          "misses": 25495,
+          "evictions": 24802,
+          "bypassed": 629,
+          "churn_per_step_layer": 7.750625,
+          "miss_rate": 1.0
+        }
+      },
+      {
+        "batch_size": 64,
+        "capacity": 3,
+        "normalized_capacity": 0.375,
+        "lru": {
+          "hits": 0,
+          "misses": 25495,
+          "evictions": 25399,
+          "bypassed": 0,
+          "churn_per_step_layer": 7.9371875,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 0,
+          "misses": 25495,
+          "evictions": 25309,
+          "bypassed": 90,
+          "churn_per_step_layer": 7.9090625,
+          "miss_rate": 1.0
+        }
+      },
+      {
+        "batch_size": 64,
+        "capacity": 4,
+        "normalized_capacity": 0.5,
+        "lru": {
+          "hits": 0,
+          "misses": 25495,
+          "evictions": 25367,
+          "bypassed": 0,
+          "churn_per_step_layer": 7.9271875,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 0,
+          "misses": 25495,
+          "evictions": 25277,
+          "bypassed": 90,
+          "churn_per_step_layer": 7.8990625,
+          "miss_rate": 1.0
+        }
+      },
+      {
+        "batch_size": 64,
+        "capacity": 5,
+        "normalized_capacity": 0.625,
+        "lru": {
+          "hits": 0,
+          "misses": 25495,
+          "evictions": 25335,
+          "bypassed": 0,
+          "churn_per_step_layer": 7.9171875,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 0,
+          "misses": 25495,
+          "evictions": 25245,
+          "bypassed": 90,
+          "churn_per_step_layer": 7.8890625,
+          "miss_rate": 1.0
+        }
+      },
+      {
+        "batch_size": 64,
+        "capacity": 6,
+        "normalized_capacity": 0.75,
+        "lru": {
+          "hits": 5,
+          "misses": 25490,
+          "evictions": 25298,
+          "bypassed": 0,
+          "churn_per_step_layer": 7.905625,
+          "miss_rate": 0.9998038831143361
+        },
+        "markov": {
+          "hits": 73,
+          "misses": 25422,
+          "evictions": 25140,
+          "bypassed": 90,
+          "churn_per_step_layer": 7.85625,
+          "miss_rate": 0.9971366934693077
+        }
+      },
+      {
+        "batch_size": 64,
+        "capacity": 7,
+        "normalized_capacity": 0.875,
+        "lru": {
+          "hits": 717,
+          "misses": 24778,
+          "evictions": 24554,
+          "bypassed": 0,
+          "churn_per_step_layer": 7.673125,
+          "miss_rate": 0.9718768385958031
+        },
+        "markov": {
+          "hits": 1256,
+          "misses": 24239,
+          "evictions": 23925,
+          "bypassed": 90,
+          "churn_per_step_layer": 7.4765625,
+          "miss_rate": 0.9507354383212394
+        }
+      },
+      {
+        "batch_size": 64,
+        "capacity": 8,
+        "normalized_capacity": 1.0,
+        "lru": {
+          "hits": 25239,
+          "misses": 256,
+          "evictions": 0,
+          "bypassed": 0,
+          "churn_per_step_layer": 0.0,
+          "miss_rate": 0.01004118454598941
+        },
+        "markov": {
+          "hits": 25151,
+          "misses": 344,
+          "evictions": 0,
+          "bypassed": 88,
+          "churn_per_step_layer": 0.0,
+          "miss_rate": 0.01349284173367327
+        }
+      },
+      {
+        "batch_size": 128,
+        "capacity": 1,
+        "normalized_capacity": 0.125,
+        "lru": {
+          "hits": 0,
+          "misses": 25582,
+          "evictions": 25550,
+          "bypassed": 0,
+          "churn_per_step_layer": 7.984375,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 0,
+          "misses": 25582,
+          "evictions": 23489,
+          "bypassed": 2061,
+          "churn_per_step_layer": 7.3403125,
+          "miss_rate": 1.0
+        }
+      },
+      {
+        "batch_size": 128,
+        "capacity": 2,
+        "normalized_capacity": 0.25,
+        "lru": {
+          "hits": 0,
+          "misses": 25582,
+          "evictions": 25518,
+          "bypassed": 0,
+          "churn_per_step_layer": 7.974375,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 0,
+          "misses": 25582,
+          "evictions": 24865,
+          "bypassed": 653,
+          "churn_per_step_layer": 7.7703125,
+          "miss_rate": 1.0
+        }
+      },
+      {
+        "batch_size": 128,
+        "capacity": 3,
+        "normalized_capacity": 0.375,
+        "lru": {
+          "hits": 0,
+          "misses": 25582,
+          "evictions": 25486,
+          "bypassed": 0,
+          "churn_per_step_layer": 7.964375,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 0,
+          "misses": 25582,
+          "evictions": 25388,
+          "bypassed": 98,
+          "churn_per_step_layer": 7.93375,
+          "miss_rate": 1.0
+        }
+      },
+      {
+        "batch_size": 128,
+        "capacity": 4,
+        "normalized_capacity": 0.5,
+        "lru": {
+          "hits": 0,
+          "misses": 25582,
+          "evictions": 25454,
+          "bypassed": 0,
+          "churn_per_step_layer": 7.954375,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 0,
+          "misses": 25582,
+          "evictions": 25356,
+          "bypassed": 98,
+          "churn_per_step_layer": 7.92375,
+          "miss_rate": 1.0
+        }
+      },
+      {
+        "batch_size": 128,
+        "capacity": 5,
+        "normalized_capacity": 0.625,
+        "lru": {
+          "hits": 0,
+          "misses": 25582,
+          "evictions": 25422,
+          "bypassed": 0,
+          "churn_per_step_layer": 7.944375,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 0,
+          "misses": 25582,
+          "evictions": 25324,
+          "bypassed": 98,
+          "churn_per_step_layer": 7.91375,
+          "miss_rate": 1.0
+        }
+      },
+      {
+        "batch_size": 128,
+        "capacity": 6,
+        "normalized_capacity": 0.75,
+        "lru": {
+          "hits": 0,
+          "misses": 25582,
+          "evictions": 25390,
+          "bypassed": 0,
+          "churn_per_step_layer": 7.934375,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 12,
+          "misses": 25570,
+          "evictions": 25280,
+          "bypassed": 98,
+          "churn_per_step_layer": 7.9,
+          "miss_rate": 0.9995309201782503
+        }
+      },
+      {
+        "batch_size": 128,
+        "capacity": 7,
+        "normalized_capacity": 0.875,
+        "lru": {
+          "hits": 123,
+          "misses": 25459,
+          "evictions": 25235,
+          "bypassed": 0,
+          "churn_per_step_layer": 7.8859375,
+          "miss_rate": 0.9951919318270659
+        },
+        "markov": {
+          "hits": 790,
+          "misses": 24792,
+          "evictions": 24470,
+          "bypassed": 98,
+          "churn_per_step_layer": 7.646875,
+          "miss_rate": 0.9691189117348136
+        }
+      },
+      {
+        "batch_size": 128,
+        "capacity": 8,
+        "normalized_capacity": 1.0,
+        "lru": {
+          "hits": 25326,
+          "misses": 256,
+          "evictions": 0,
+          "bypassed": 0,
+          "churn_per_step_layer": 0.0,
+          "miss_rate": 0.010007036197326244
+        },
+        "markov": {
+          "hits": 25228,
+          "misses": 354,
+          "evictions": 0,
+          "bypassed": 98,
+          "churn_per_step_layer": 0.0,
+          "miss_rate": 0.013837854741615198
+        }
+      },
+      {
+        "batch_size": 256,
+        "capacity": 1,
+        "normalized_capacity": 0.125,
+        "lru": {
+          "hits": 0,
+          "misses": 25599,
+          "evictions": 25567,
+          "bypassed": 0,
+          "churn_per_step_layer": 7.9896875,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 0,
+          "misses": 25599,
+          "evictions": 23488,
+          "bypassed": 2079,
+          "churn_per_step_layer": 7.34,
+          "miss_rate": 1.0
+        }
+      },
+      {
+        "batch_size": 256,
+        "capacity": 2,
+        "normalized_capacity": 0.25,
+        "lru": {
+          "hits": 0,
+          "misses": 25599,
+          "evictions": 25535,
+          "bypassed": 0,
+          "churn_per_step_layer": 7.9796875,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 0,
+          "misses": 25599,
+          "evictions": 24942,
+          "bypassed": 593,
+          "churn_per_step_layer": 7.794375,
+          "miss_rate": 1.0
+        }
+      },
+      {
+        "batch_size": 256,
+        "capacity": 3,
+        "normalized_capacity": 0.375,
+        "lru": {
+          "hits": 0,
+          "misses": 25599,
+          "evictions": 25503,
+          "bypassed": 0,
+          "churn_per_step_layer": 7.9696875,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 0,
+          "misses": 25599,
+          "evictions": 25404,
+          "bypassed": 99,
+          "churn_per_step_layer": 7.93875,
+          "miss_rate": 1.0
+        }
+      },
+      {
+        "batch_size": 256,
+        "capacity": 4,
+        "normalized_capacity": 0.5,
+        "lru": {
+          "hits": 0,
+          "misses": 25599,
+          "evictions": 25471,
+          "bypassed": 0,
+          "churn_per_step_layer": 7.9596875,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 0,
+          "misses": 25599,
+          "evictions": 25372,
+          "bypassed": 99,
+          "churn_per_step_layer": 7.92875,
+          "miss_rate": 1.0
+        }
+      },
+      {
+        "batch_size": 256,
+        "capacity": 5,
+        "normalized_capacity": 0.625,
+        "lru": {
+          "hits": 0,
+          "misses": 25599,
+          "evictions": 25439,
+          "bypassed": 0,
+          "churn_per_step_layer": 7.9496875,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 0,
+          "misses": 25599,
+          "evictions": 25340,
+          "bypassed": 99,
+          "churn_per_step_layer": 7.91875,
+          "miss_rate": 1.0
+        }
+      },
+      {
+        "batch_size": 256,
+        "capacity": 6,
+        "normalized_capacity": 0.75,
+        "lru": {
+          "hits": 0,
+          "misses": 25599,
+          "evictions": 25407,
+          "bypassed": 0,
+          "churn_per_step_layer": 7.9396875,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 0,
+          "misses": 25599,
+          "evictions": 25308,
+          "bypassed": 99,
+          "churn_per_step_layer": 7.90875,
+          "miss_rate": 1.0
+        }
+      },
+      {
+        "batch_size": 256,
+        "capacity": 7,
+        "normalized_capacity": 0.875,
+        "lru": {
+          "hits": 7,
+          "misses": 25592,
+          "evictions": 25368,
+          "bypassed": 0,
+          "churn_per_step_layer": 7.9275,
+          "miss_rate": 0.9997265518184304
+        },
+        "markov": {
+          "hits": 697,
+          "misses": 24902,
+          "evictions": 24579,
+          "bypassed": 99,
+          "churn_per_step_layer": 7.6809375,
+          "miss_rate": 0.9727723739208562
+        }
+      },
+      {
+        "batch_size": 256,
+        "capacity": 8,
+        "normalized_capacity": 1.0,
+        "lru": {
+          "hits": 25343,
+          "misses": 256,
+          "evictions": 0,
+          "bypassed": 0,
+          "churn_per_step_layer": 0.0,
+          "miss_rate": 0.010000390640259385
+        },
+        "markov": {
+          "hits": 25244,
+          "misses": 355,
+          "evictions": 0,
+          "bypassed": 99,
+          "churn_per_step_layer": 0.0,
+          "miss_rate": 0.013867729208172194
+        }
+      }
+    ]
+  },
+  "Qwen": {
+    "delta": 0.5213325768709183,
+    "experts": 60,
+    "sweeps": [
+      {
+        "batch_size": 16,
+        "capacity": 6,
+        "normalized_capacity": 0.1,
+        "lru": {
+          "hits": 89,
+          "misses": 32406,
+          "evictions": 32262,
+          "bypassed": 0,
+          "churn_per_step_layer": 13.4425,
+          "miss_rate": 0.9972611170949377
+        },
+        "markov": {
+          "hits": 2186,
+          "misses": 30309,
+          "evictions": 14357,
+          "bypassed": 15808,
+          "churn_per_step_layer": 5.982083333333334,
+          "miss_rate": 0.9327281120172334
+        }
+      },
+      {
+        "batch_size": 16,
+        "capacity": 12,
+        "normalized_capacity": 0.2,
+        "lru": {
+          "hits": 3343,
+          "misses": 29152,
+          "evictions": 28864,
+          "bypassed": 0,
+          "churn_per_step_layer": 12.026666666666667,
+          "miss_rate": 0.8971226342514232
+        },
+        "markov": {
+          "hits": 8342,
+          "misses": 24153,
+          "evictions": 13880,
+          "bypassed": 9985,
+          "churn_per_step_layer": 5.783333333333333,
+          "miss_rate": 0.7432835820895523
+        }
+      },
+      {
+        "batch_size": 16,
+        "capacity": 18,
+        "normalized_capacity": 0.3,
+        "lru": {
+          "hits": 11417,
+          "misses": 21078,
+          "evictions": 20646,
+          "bypassed": 0,
+          "churn_per_step_layer": 8.6025,
+          "miss_rate": 0.648653639021388
+        },
+        "markov": {
+          "hits": 12846,
+          "misses": 19649,
+          "evictions": 11887,
+          "bypassed": 7330,
+          "churn_per_step_layer": 4.952916666666667,
+          "miss_rate": 0.6046776427142637
+        }
+      },
+      {
+        "batch_size": 16,
+        "capacity": 24,
+        "normalized_capacity": 0.4,
+        "lru": {
+          "hits": 15565,
+          "misses": 16930,
+          "evictions": 16354,
+          "bypassed": 0,
+          "churn_per_step_layer": 6.814166666666667,
+          "miss_rate": 0.5210032312663486
+        },
+        "markov": {
+          "hits": 16975,
+          "misses": 15520,
+          "evictions": 9133,
+          "bypassed": 5811,
+          "churn_per_step_layer": 3.8054166666666664,
+          "miss_rate": 0.47761194029850745
+        }
+      },
+      {
+        "batch_size": 16,
+        "capacity": 30,
+        "normalized_capacity": 0.5,
+        "lru": {
+          "hits": 19211,
+          "misses": 13284,
+          "evictions": 12564,
+          "bypassed": 0,
+          "churn_per_step_layer": 5.235,
+          "miss_rate": 0.40880135405446993
+        },
+        "markov": {
+          "hits": 20735,
+          "misses": 11760,
+          "evictions": 6191,
+          "bypassed": 4849,
+          "churn_per_step_layer": 2.5795833333333333,
+          "miss_rate": 0.36190183105093093
+        }
+      },
+      {
+        "batch_size": 16,
+        "capacity": 36,
+        "normalized_capacity": 0.6,
+        "lru": {
+          "hits": 22663,
+          "misses": 9832,
+          "evictions": 8968,
+          "bypassed": 0,
+          "churn_per_step_layer": 3.736666666666667,
+          "miss_rate": 0.3025696260963225
+        },
+        "markov": {
+          "hits": 23948,
+          "misses": 8547,
+          "evictions": 3626,
+          "bypassed": 4057,
+          "churn_per_step_layer": 1.5108333333333333,
+          "miss_rate": 0.2630250807816587
+        }
+      },
+      {
+        "batch_size": 16,
+        "capacity": 42,
+        "normalized_capacity": 0.7,
+        "lru": {
+          "hits": 25632,
+          "misses": 6863,
+          "evictions": 5855,
+          "bypassed": 0,
+          "churn_per_step_layer": 2.439583333333333,
+          "miss_rate": 0.21120172334205262
+        },
+        "markov": {
+          "hits": 26657,
+          "misses": 5838,
+          "evictions": 1368,
+          "bypassed": 3462,
+          "churn_per_step_layer": 0.57,
+          "miss_rate": 0.17965840898599786
+        }
+      },
+      {
+        "batch_size": 16,
+        "capacity": 48,
+        "normalized_capacity": 0.8,
+        "lru": {
+          "hits": 28141,
+          "misses": 4354,
+          "evictions": 3202,
+          "bypassed": 0,
+          "churn_per_step_layer": 1.3341666666666667,
+          "miss_rate": 0.13398984459147562
+        },
+        "markov": {
+          "hits": 28285,
+          "misses": 4210,
+          "evictions": 282,
+          "bypassed": 2790,
+          "churn_per_step_layer": 0.1175,
+          "miss_rate": 0.12955839359901522
+        }
+      },
+      {
+        "batch_size": 16,
+        "capacity": 54,
+        "normalized_capacity": 0.9,
+        "lru": {
+          "hits": 30074,
+          "misses": 2421,
+          "evictions": 1125,
+          "bypassed": 0,
+          "churn_per_step_layer": 0.46875,
+          "miss_rate": 0.07450376981074011
+        },
+        "markov": {
+          "hits": 28734,
+          "misses": 3761,
+          "evictions": 14,
+          "bypassed": 2543,
+          "churn_per_step_layer": 0.005833333333333334,
+          "miss_rate": 0.11574088321280197
+        }
+      },
+      {
+        "batch_size": 16,
+        "capacity": 60,
+        "normalized_capacity": 1.0,
+        "lru": {
+          "hits": 31062,
+          "misses": 1433,
+          "evictions": 0,
+          "bypassed": 0,
+          "churn_per_step_layer": 0.0,
+          "miss_rate": 0.04409909216802585
+        },
+        "markov": {
+          "hits": 28749,
+          "misses": 3746,
+          "evictions": 0,
+          "bypassed": 2536,
+          "churn_per_step_layer": 0.0,
+          "miss_rate": 0.11527927373442068
+        }
+      },
+      {
+        "batch_size": 64,
+        "capacity": 6,
+        "normalized_capacity": 0.1,
+        "lru": {
+          "hits": 0,
+          "misses": 84531,
+          "evictions": 84387,
+          "bypassed": 0,
+          "churn_per_step_layer": 35.16125,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 95,
+          "misses": 84436,
+          "evictions": 35274,
+          "bypassed": 49018,
+          "churn_per_step_layer": 14.6975,
+          "miss_rate": 0.9988761519442572
+        }
+      },
+      {
+        "batch_size": 64,
+        "capacity": 12,
+        "normalized_capacity": 0.2,
+        "lru": {
+          "hits": 0,
+          "misses": 84531,
+          "evictions": 84243,
+          "bypassed": 0,
+          "churn_per_step_layer": 35.10125,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 1322,
+          "misses": 83209,
+          "evictions": 50303,
+          "bypassed": 32618,
+          "churn_per_step_layer": 20.959583333333335,
+          "miss_rate": 0.9843607670558729
+        }
+      },
+      {
+        "batch_size": 64,
+        "capacity": 18,
+        "normalized_capacity": 0.3,
+        "lru": {
+          "hits": 0,
+          "misses": 84531,
+          "evictions": 84099,
+          "bypassed": 0,
+          "churn_per_step_layer": 35.04125,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 530,
+          "misses": 84001,
+          "evictions": 59793,
+          "bypassed": 23776,
+          "churn_per_step_layer": 24.91375,
+          "miss_rate": 0.9937301108469082
+        }
+      },
+      {
+        "batch_size": 64,
+        "capacity": 24,
+        "normalized_capacity": 0.4,
+        "lru": {
+          "hits": 37,
+          "misses": 84494,
+          "evictions": 83918,
+          "bypassed": 0,
+          "churn_per_step_layer": 34.965833333333336,
+          "miss_rate": 0.999562290757237
+        },
+        "markov": {
+          "hits": 6882,
+          "misses": 77649,
+          "evictions": 58754,
+          "bypassed": 18319,
+          "churn_per_step_layer": 24.480833333333333,
+          "miss_rate": 0.9185860808460802
+        }
+      },
+      {
+        "batch_size": 64,
+        "capacity": 30,
+        "normalized_capacity": 0.5,
+        "lru": {
+          "hits": 3434,
+          "misses": 81097,
+          "evictions": 80377,
+          "bypassed": 0,
+          "churn_per_step_layer": 33.49041666666667,
+          "miss_rate": 0.959375850279779
+        },
+        "markov": {
+          "hits": 34855,
+          "misses": 49676,
+          "evictions": 33690,
+          "bypassed": 15266,
+          "churn_per_step_layer": 14.0375,
+          "miss_rate": 0.5876660633377104
+        }
+      },
+      {
+        "batch_size": 64,
+        "capacity": 36,
+        "normalized_capacity": 0.6,
+        "lru": {
+          "hits": 36714,
+          "misses": 47817,
+          "evictions": 46953,
+          "bypassed": 0,
+          "churn_per_step_layer": 19.56375,
+          "miss_rate": 0.5656741313837527
+        },
+        "markov": {
+          "hits": 54180,
+          "misses": 30351,
+          "evictions": 16122,
+          "bypassed": 13365,
+          "churn_per_step_layer": 6.7175,
+          "miss_rate": 0.3590517088405437
+        }
+      },
+      {
+        "batch_size": 64,
+        "capacity": 42,
+        "normalized_capacity": 0.7,
+        "lru": {
+          "hits": 58232,
+          "misses": 26299,
+          "evictions": 25291,
+          "bypassed": 0,
+          "churn_per_step_layer": 10.537916666666666,
+          "miss_rate": 0.311116631768227
+        },
+        "markov": {
+          "hits": 65674,
+          "misses": 18857,
+          "evictions": 6537,
+          "bypassed": 11312,
+          "churn_per_step_layer": 2.72375,
+          "miss_rate": 0.22307792407519134
+        }
+      },
+      {
+        "batch_size": 64,
+        "capacity": 48,
+        "normalized_capacity": 0.8,
+        "lru": {
+          "hits": 68529,
+          "misses": 16002,
+          "evictions": 14850,
+          "bypassed": 0,
+          "churn_per_step_layer": 6.1875,
+          "miss_rate": 0.18930333250523476
+        },
+        "markov": {
+          "hits": 73684,
+          "misses": 10847,
+          "evictions": 1493,
+          "bypassed": 8202,
+          "churn_per_step_layer": 0.6220833333333333,
+          "miss_rate": 0.12831978800676674
+        }
+      },
+      {
+        "batch_size": 64,
+        "capacity": 54,
+        "normalized_capacity": 0.9,
+        "lru": {
+          "hits": 78031,
+          "misses": 6500,
+          "evictions": 5204,
+          "bypassed": 0,
+          "churn_per_step_layer": 2.1683333333333334,
+          "miss_rate": 0.07689486697188014
+        },
+        "markov": {
+          "hits": 78130,
+          "misses": 6401,
+          "evictions": 115,
+          "bypassed": 4994,
+          "churn_per_step_layer": 0.04791666666666667,
+          "miss_rate": 0.07572369899800073
+        }
+      },
+      {
+        "batch_size": 64,
+        "capacity": 60,
+        "normalized_capacity": 1.0,
+        "lru": {
+          "hits": 83091,
+          "misses": 1440,
+          "evictions": 0,
+          "bypassed": 0,
+          "churn_per_step_layer": 0.0,
+          "miss_rate": 0.017035170529154986
+        },
+        "markov": {
+          "hits": 78908,
+          "misses": 5623,
+          "evictions": 0,
+          "bypassed": 4271,
+          "churn_per_step_layer": 0.0,
+          "miss_rate": 0.06651997492044338
+        }
+      },
+      {
+        "batch_size": 128,
+        "capacity": 6,
+        "normalized_capacity": 0.1,
+        "lru": {
+          "hits": 0,
+          "misses": 112238,
+          "evictions": 112094,
+          "bypassed": 0,
+          "churn_per_step_layer": 46.70583333333333,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 132,
+          "misses": 112106,
+          "evictions": 43673,
+          "bypassed": 68289,
+          "churn_per_step_layer": 18.19708333333333,
+          "miss_rate": 0.9988239277250129
+        }
+      },
+      {
+        "batch_size": 128,
+        "capacity": 12,
+        "normalized_capacity": 0.2,
+        "lru": {
+          "hits": 0,
+          "misses": 112238,
+          "evictions": 111950,
+          "bypassed": 0,
+          "churn_per_step_layer": 46.645833333333336,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 42,
+          "misses": 112196,
+          "evictions": 63157,
+          "bypassed": 48751,
+          "churn_per_step_layer": 26.315416666666668,
+          "miss_rate": 0.9996257951852314
+        }
+      },
+      {
+        "batch_size": 128,
+        "capacity": 18,
+        "normalized_capacity": 0.3,
+        "lru": {
+          "hits": 0,
+          "misses": 112238,
+          "evictions": 111806,
+          "bypassed": 0,
+          "churn_per_step_layer": 46.58583333333333,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 0,
+          "misses": 112238,
+          "evictions": 74323,
+          "bypassed": 37483,
+          "churn_per_step_layer": 30.967916666666667,
+          "miss_rate": 1.0
+        }
+      },
+      {
+        "batch_size": 128,
+        "capacity": 24,
+        "normalized_capacity": 0.4,
+        "lru": {
+          "hits": 0,
+          "misses": 112238,
+          "evictions": 111662,
+          "bypassed": 0,
+          "churn_per_step_layer": 46.52583333333333,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 24,
+          "misses": 112214,
+          "evictions": 82237,
+          "bypassed": 29401,
+          "churn_per_step_layer": 34.26541666666667,
+          "miss_rate": 0.9997861686772751
+        }
+      },
+      {
+        "batch_size": 128,
+        "capacity": 30,
+        "normalized_capacity": 0.5,
+        "lru": {
+          "hits": 0,
+          "misses": 112238,
+          "evictions": 111518,
+          "bypassed": 0,
+          "churn_per_step_layer": 46.465833333333336,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 1679,
+          "misses": 110559,
+          "evictions": 85524,
+          "bypassed": 24315,
+          "churn_per_step_layer": 35.635,
+          "miss_rate": 0.9850407170477022
+        }
+      },
+      {
+        "batch_size": 128,
+        "capacity": 36,
+        "normalized_capacity": 0.6,
+        "lru": {
+          "hits": 72,
+          "misses": 112166,
+          "evictions": 111302,
+          "bypassed": 0,
+          "churn_per_step_layer": 46.37583333333333,
+          "miss_rate": 0.9993585060318252
+        },
+        "markov": {
+          "hits": 24577,
+          "misses": 87661,
+          "evictions": 66150,
+          "bypassed": 20647,
+          "churn_per_step_layer": 27.5625,
+          "miss_rate": 0.7810278158912312
+        }
+      },
+      {
+        "batch_size": 128,
+        "capacity": 42,
+        "normalized_capacity": 0.7,
+        "lru": {
+          "hits": 7137,
+          "misses": 105101,
+          "evictions": 104093,
+          "bypassed": 0,
+          "churn_per_step_layer": 43.372083333333336,
+          "miss_rate": 0.9364119104046758
+        },
+        "markov": {
+          "hits": 72171,
+          "misses": 40067,
+          "evictions": 20907,
+          "bypassed": 18152,
+          "churn_per_step_layer": 8.71125,
+          "miss_rate": 0.3569824836508135
+        }
+      },
+      {
+        "batch_size": 128,
+        "capacity": 48,
+        "normalized_capacity": 0.8,
+        "lru": {
+          "hits": 65001,
+          "misses": 47237,
+          "evictions": 46085,
+          "bypassed": 0,
+          "churn_per_step_layer": 19.202083333333334,
+          "miss_rate": 0.42086459131488446
+        },
+        "markov": {
+          "hits": 94687,
+          "misses": 17551,
+          "evictions": 3588,
+          "bypassed": 12811,
+          "churn_per_step_layer": 1.495,
+          "miss_rate": 0.15637306438104742
+        }
+      },
+      {
+        "batch_size": 128,
+        "capacity": 54,
+        "normalized_capacity": 0.9,
+        "lru": {
+          "hits": 99458,
+          "misses": 12780,
+          "evictions": 11484,
+          "bypassed": 0,
+          "churn_per_step_layer": 4.785,
+          "miss_rate": 0.11386517935102193
+        },
+        "markov": {
+          "hits": 103073,
+          "misses": 9165,
+          "evictions": 345,
+          "bypassed": 7524,
+          "churn_per_step_layer": 0.14375,
+          "miss_rate": 0.08165683636558028
+        }
+      },
+      {
+        "batch_size": 128,
+        "capacity": 60,
+        "normalized_capacity": 1.0,
+        "lru": {
+          "hits": 110798,
+          "misses": 1440,
+          "evictions": 0,
+          "bypassed": 0,
+          "churn_per_step_layer": 0.0,
+          "miss_rate": 0.012829879363495429
+        },
+        "markov": {
+          "hits": 105951,
+          "misses": 6287,
+          "evictions": 0,
+          "bypassed": 4873,
+          "churn_per_step_layer": 0.0,
+          "miss_rate": 0.05601489691548317
+        }
+      },
+      {
+        "batch_size": 256,
+        "capacity": 6,
+        "normalized_capacity": 0.1,
+        "lru": {
+          "hits": 0,
+          "misses": 130561,
+          "evictions": 130417,
+          "bypassed": 0,
+          "churn_per_step_layer": 54.34041666666667,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 133,
+          "misses": 130428,
+          "evictions": 48428,
+          "bypassed": 81856,
+          "churn_per_step_layer": 20.178333333333335,
+          "miss_rate": 0.9989813190769066
+        }
+      },
+      {
+        "batch_size": 256,
+        "capacity": 12,
+        "normalized_capacity": 0.2,
+        "lru": {
+          "hits": 0,
+          "misses": 130561,
+          "evictions": 130273,
+          "bypassed": 0,
+          "churn_per_step_layer": 54.28041666666667,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 0,
+          "misses": 130561,
+          "evictions": 71543,
+          "bypassed": 58730,
+          "churn_per_step_layer": 29.809583333333332,
+          "miss_rate": 1.0
+        }
+      },
+      {
+        "batch_size": 256,
+        "capacity": 18,
+        "normalized_capacity": 0.3,
+        "lru": {
+          "hits": 0,
+          "misses": 130561,
+          "evictions": 130129,
+          "bypassed": 0,
+          "churn_per_step_layer": 54.220416666666665,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 0,
+          "misses": 130561,
+          "evictions": 83611,
+          "bypassed": 46518,
+          "churn_per_step_layer": 34.837916666666665,
+          "miss_rate": 1.0
+        }
+      },
+      {
+        "batch_size": 256,
+        "capacity": 24,
+        "normalized_capacity": 0.4,
+        "lru": {
+          "hits": 0,
+          "misses": 130561,
+          "evictions": 129985,
+          "bypassed": 0,
+          "churn_per_step_layer": 54.16041666666667,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 0,
+          "misses": 130561,
+          "evictions": 92278,
+          "bypassed": 37707,
+          "churn_per_step_layer": 38.44916666666666,
+          "miss_rate": 1.0
+        }
+      },
+      {
+        "batch_size": 256,
+        "capacity": 30,
+        "normalized_capacity": 0.5,
+        "lru": {
+          "hits": 0,
+          "misses": 130561,
+          "evictions": 129841,
+          "bypassed": 0,
+          "churn_per_step_layer": 54.10041666666667,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 7,
+          "misses": 130554,
+          "evictions": 97231,
+          "bypassed": 32603,
+          "churn_per_step_layer": 40.51291666666667,
+          "miss_rate": 0.999946385214574
+        }
+      },
+      {
+        "batch_size": 256,
+        "capacity": 36,
+        "normalized_capacity": 0.6,
+        "lru": {
+          "hits": 0,
+          "misses": 130561,
+          "evictions": 129697,
+          "bypassed": 0,
+          "churn_per_step_layer": 54.040416666666665,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 583,
+          "misses": 129978,
+          "evictions": 101722,
+          "bypassed": 27392,
+          "churn_per_step_layer": 42.384166666666665,
+          "miss_rate": 0.9955346542995228
+        }
+      },
+      {
+        "batch_size": 256,
+        "capacity": 42,
+        "normalized_capacity": 0.7,
+        "lru": {
+          "hits": 0,
+          "misses": 130561,
+          "evictions": 129553,
+          "bypassed": 0,
+          "churn_per_step_layer": 53.98041666666666,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 33271,
+          "misses": 97290,
+          "evictions": 72395,
+          "bypassed": 23887,
+          "churn_per_step_layer": 30.164583333333333,
+          "miss_rate": 0.7451689248703671
+        }
+      },
+      {
+        "batch_size": 256,
+        "capacity": 48,
+        "normalized_capacity": 0.8,
+        "lru": {
+          "hits": 1779,
+          "misses": 128782,
+          "evictions": 127630,
+          "bypassed": 0,
+          "churn_per_step_layer": 53.17916666666667,
+          "miss_rate": 0.9863741852467429
+        },
+        "markov": {
+          "hits": 88043,
+          "misses": 42518,
+          "evictions": 23065,
+          "bypassed": 18301,
+          "churn_per_step_layer": 9.610416666666667,
+          "miss_rate": 0.3256562066773386
+        }
+      },
+      {
+        "batch_size": 256,
+        "capacity": 54,
+        "normalized_capacity": 0.9,
+        "lru": {
+          "hits": 56821,
+          "misses": 73740,
+          "evictions": 72444,
+          "bypassed": 0,
+          "churn_per_step_layer": 30.185,
+          "miss_rate": 0.5647934681872842
+        },
+        "markov": {
+          "hits": 116842,
+          "misses": 13719,
+          "evictions": 1456,
+          "bypassed": 10967,
+          "churn_per_step_layer": 0.6066666666666667,
+          "miss_rate": 0.10507732017983931
+        }
+      },
+      {
+        "batch_size": 256,
+        "capacity": 60,
+        "normalized_capacity": 1.0,
+        "lru": {
+          "hits": 129121,
+          "misses": 1440,
+          "evictions": 0,
+          "bypassed": 0,
+          "churn_per_step_layer": 0.0,
+          "miss_rate": 0.011029327287628005
+        },
+        "markov": {
+          "hits": 122908,
+          "misses": 7653,
+          "evictions": 0,
+          "bypassed": 6215,
+          "churn_per_step_layer": 0.0,
+          "miss_rate": 0.058616278980706336
+        }
+      }
+    ]
+  },
+  "Switch": {
+    "delta": 0.66079048315684,
+    "experts": 128,
+    "sweeps": [
+      {
+        "batch_size": 16,
+        "capacity": 12,
+        "normalized_capacity": 0.09375,
+        "lru": {
+          "hits": 2518,
+          "misses": 3872,
+          "evictions": 3800,
+          "bypassed": 0,
+          "churn_per_step_layer": 6.333333333333333,
+          "miss_rate": 0.6059467918622848
+        },
+        "markov": {
+          "hits": 3449,
+          "misses": 2941,
+          "evictions": 702,
+          "bypassed": 2167,
+          "churn_per_step_layer": 1.17,
+          "miss_rate": 0.46025039123630673
+        }
+      },
+      {
+        "batch_size": 16,
+        "capacity": 25,
+        "normalized_capacity": 0.1953125,
+        "lru": {
+          "hits": 4583,
+          "misses": 1807,
+          "evictions": 1657,
+          "bypassed": 0,
+          "churn_per_step_layer": 2.7616666666666667,
+          "miss_rate": 0.2827856025039124
+        },
+        "markov": {
+          "hits": 4633,
+          "misses": 1757,
+          "evictions": 411,
+          "bypassed": 1196,
+          "churn_per_step_layer": 0.685,
+          "miss_rate": 0.2749608763693271
+        }
+      },
+      {
+        "batch_size": 16,
+        "capacity": 38,
+        "normalized_capacity": 0.296875,
+        "lru": {
+          "hits": 5306,
+          "misses": 1084,
+          "evictions": 856,
+          "bypassed": 0,
+          "churn_per_step_layer": 1.4266666666666667,
+          "miss_rate": 0.1696400625978091
+        },
+        "markov": {
+          "hits": 4977,
+          "misses": 1413,
+          "evictions": 228,
+          "bypassed": 967,
+          "churn_per_step_layer": 0.38,
+          "miss_rate": 0.2211267605633803
+        }
+      },
+      {
+        "batch_size": 16,
+        "capacity": 51,
+        "normalized_capacity": 0.3984375,
+        "lru": {
+          "hits": 5622,
+          "misses": 768,
+          "evictions": 462,
+          "bypassed": 0,
+          "churn_per_step_layer": 0.77,
+          "miss_rate": 0.12018779342723004
+        },
+        "markov": {
+          "hits": 5153,
+          "misses": 1237,
+          "evictions": 137,
+          "bypassed": 851,
+          "churn_per_step_layer": 0.22833333333333333,
+          "miss_rate": 0.19358372456964007
+        }
+      },
+      {
+        "batch_size": 16,
+        "capacity": 64,
+        "normalized_capacity": 0.5,
+        "lru": {
+          "hits": 5776,
+          "misses": 614,
+          "evictions": 230,
+          "bypassed": 0,
+          "churn_per_step_layer": 0.38333333333333336,
+          "miss_rate": 0.09608763693270736
+        },
+        "markov": {
+          "hits": 5244,
+          "misses": 1146,
+          "evictions": 70,
+          "bypassed": 801,
+          "churn_per_step_layer": 0.11666666666666667,
+          "miss_rate": 0.17934272300469484
+        }
+      },
+      {
+        "batch_size": 16,
+        "capacity": 76,
+        "normalized_capacity": 0.59375,
+        "lru": {
+          "hits": 5850,
+          "misses": 540,
+          "evictions": 112,
+          "bypassed": 0,
+          "churn_per_step_layer": 0.18666666666666668,
+          "miss_rate": 0.08450704225352113
+        },
+        "markov": {
+          "hits": 5299,
+          "misses": 1091,
+          "evictions": 20,
+          "bypassed": 783,
+          "churn_per_step_layer": 0.03333333333333333,
+          "miss_rate": 0.170735524256651
+        }
+      },
+      {
+        "batch_size": 16,
+        "capacity": 89,
+        "normalized_capacity": 0.6953125,
+        "lru": {
+          "hits": 5901,
+          "misses": 489,
+          "evictions": 40,
+          "bypassed": 0,
+          "churn_per_step_layer": 0.06666666666666667,
+          "miss_rate": 0.07652582159624413
+        },
+        "markov": {
+          "hits": 5317,
+          "misses": 1073,
+          "evictions": 0,
+          "bypassed": 772,
+          "churn_per_step_layer": 0.0,
+          "miss_rate": 0.1679186228482003
+        }
+      },
+      {
+        "batch_size": 16,
+        "capacity": 102,
+        "normalized_capacity": 0.796875,
+        "lru": {
+          "hits": 5923,
+          "misses": 467,
+          "evictions": 5,
+          "bypassed": 0,
+          "churn_per_step_layer": 0.008333333333333333,
+          "miss_rate": 0.0730829420970266
+        },
+        "markov": {
+          "hits": 5317,
+          "misses": 1073,
+          "evictions": 0,
+          "bypassed": 772,
+          "churn_per_step_layer": 0.0,
+          "miss_rate": 0.1679186228482003
+        }
+      },
+      {
+        "batch_size": 16,
+        "capacity": 115,
+        "normalized_capacity": 0.8984375,
+        "lru": {
+          "hits": 5923,
+          "misses": 467,
+          "evictions": 0,
+          "bypassed": 0,
+          "churn_per_step_layer": 0.0,
+          "miss_rate": 0.0730829420970266
+        },
+        "markov": {
+          "hits": 5317,
+          "misses": 1073,
+          "evictions": 0,
+          "bypassed": 772,
+          "churn_per_step_layer": 0.0,
+          "miss_rate": 0.1679186228482003
+        }
+      },
+      {
+        "batch_size": 16,
+        "capacity": 128,
+        "normalized_capacity": 1.0,
+        "lru": {
+          "hits": 5923,
+          "misses": 467,
+          "evictions": 0,
+          "bypassed": 0,
+          "churn_per_step_layer": 0.0,
+          "miss_rate": 0.0730829420970266
+        },
+        "markov": {
+          "hits": 5317,
+          "misses": 1073,
+          "evictions": 0,
+          "bypassed": 772,
+          "churn_per_step_layer": 0.0,
+          "miss_rate": 0.1679186228482003
+        }
+      },
+      {
+        "batch_size": 64,
+        "capacity": 12,
+        "normalized_capacity": 0.09375,
+        "lru": {
+          "hits": 363,
+          "misses": 14037,
+          "evictions": 13965,
+          "bypassed": 0,
+          "churn_per_step_layer": 23.275,
+          "miss_rate": 0.9747916666666666
+        },
+        "markov": {
+          "hits": 3734,
+          "misses": 10666,
+          "evictions": 3630,
+          "bypassed": 6964,
+          "churn_per_step_layer": 6.05,
+          "miss_rate": 0.7406944444444444
+        }
+      },
+      {
+        "batch_size": 64,
+        "capacity": 25,
+        "normalized_capacity": 0.1953125,
+        "lru": {
+          "hits": 5560,
+          "misses": 8840,
+          "evictions": 8690,
+          "bypassed": 0,
+          "churn_per_step_layer": 14.483333333333333,
+          "miss_rate": 0.6138888888888889
+        },
+        "markov": {
+          "hits": 7801,
+          "misses": 6599,
+          "evictions": 1693,
+          "bypassed": 4756,
+          "churn_per_step_layer": 2.8216666666666668,
+          "miss_rate": 0.4582638888888889
+        }
+      },
+      {
+        "batch_size": 64,
+        "capacity": 38,
+        "normalized_capacity": 0.296875,
+        "lru": {
+          "hits": 10376,
+          "misses": 4024,
+          "evictions": 3796,
+          "bypassed": 0,
+          "churn_per_step_layer": 6.326666666666667,
+          "miss_rate": 0.27944444444444444
+        },
+        "markov": {
+          "hits": 9571,
+          "misses": 4829,
+          "evictions": 1174,
+          "bypassed": 3427,
+          "churn_per_step_layer": 1.9566666666666668,
+          "miss_rate": 0.33534722222222224
+        }
+      },
+      {
+        "batch_size": 64,
+        "capacity": 51,
+        "normalized_capacity": 0.3984375,
+        "lru": {
+          "hits": 11857,
+          "misses": 2543,
+          "evictions": 2237,
+          "bypassed": 0,
+          "churn_per_step_layer": 3.7283333333333335,
+          "miss_rate": 0.1765972222222222
+        },
+        "markov": {
+          "hits": 10694,
+          "misses": 3706,
+          "evictions": 723,
+          "bypassed": 2677,
+          "churn_per_step_layer": 1.205,
+          "miss_rate": 0.2573611111111111
+        }
+      },
+      {
+        "batch_size": 64,
+        "capacity": 64,
+        "normalized_capacity": 0.5,
+        "lru": {
+          "hits": 12757,
+          "misses": 1643,
+          "evictions": 1259,
+          "bypassed": 0,
+          "churn_per_step_layer": 2.098333333333333,
+          "miss_rate": 0.11409722222222222
+        },
+        "markov": {
+          "hits": 11510,
+          "misses": 2890,
+          "evictions": 282,
+          "bypassed": 2226,
+          "churn_per_step_layer": 0.47,
+          "miss_rate": 0.20069444444444445
+        }
+      },
+      {
+        "batch_size": 64,
+        "capacity": 76,
+        "normalized_capacity": 0.59375,
+        "lru": {
+          "hits": 13232,
+          "misses": 1168,
+          "evictions": 712,
+          "bypassed": 0,
+          "churn_per_step_layer": 1.1866666666666668,
+          "miss_rate": 0.0811111111111111
+        },
+        "markov": {
+          "hits": 11783,
+          "misses": 2617,
+          "evictions": 88,
+          "bypassed": 2099,
+          "churn_per_step_layer": 0.14666666666666667,
+          "miss_rate": 0.1817361111111111
+        }
+      },
+      {
+        "batch_size": 64,
+        "capacity": 89,
+        "normalized_capacity": 0.6953125,
+        "lru": {
+          "hits": 13567,
+          "misses": 833,
+          "evictions": 299,
+          "bypassed": 0,
+          "churn_per_step_layer": 0.49833333333333335,
+          "miss_rate": 0.057847222222222223
+        },
+        "markov": {
+          "hits": 11903,
+          "misses": 2497,
+          "evictions": 23,
+          "bypassed": 2018,
+          "churn_per_step_layer": 0.03833333333333333,
+          "miss_rate": 0.17340277777777777
+        }
+      },
+      {
+        "batch_size": 64,
+        "capacity": 102,
+        "normalized_capacity": 0.796875,
+        "lru": {
+          "hits": 13716,
+          "misses": 684,
+          "evictions": 77,
+          "bypassed": 0,
+          "churn_per_step_layer": 0.12833333333333333,
+          "miss_rate": 0.0475
+        },
+        "markov": {
+          "hits": 11947,
+          "misses": 2453,
+          "evictions": 2,
+          "bypassed": 1976,
+          "churn_per_step_layer": 0.0033333333333333335,
+          "miss_rate": 0.17034722222222223
+        }
+      },
+      {
+        "batch_size": 64,
+        "capacity": 115,
+        "normalized_capacity": 0.8984375,
+        "lru": {
+          "hits": 13758,
+          "misses": 642,
+          "evictions": 1,
+          "bypassed": 0,
+          "churn_per_step_layer": 0.0016666666666666668,
+          "miss_rate": 0.044583333333333336
+        },
+        "markov": {
+          "hits": 11947,
+          "misses": 2453,
+          "evictions": 0,
+          "bypassed": 1976,
+          "churn_per_step_layer": 0.0,
+          "miss_rate": 0.17034722222222223
+        }
+      },
+      {
+        "batch_size": 64,
+        "capacity": 128,
+        "normalized_capacity": 1.0,
+        "lru": {
+          "hits": 13758,
+          "misses": 642,
+          "evictions": 0,
+          "bypassed": 0,
+          "churn_per_step_layer": 0.0,
+          "miss_rate": 0.044583333333333336
+        },
+        "markov": {
+          "hits": 11947,
+          "misses": 2453,
+          "evictions": 0,
+          "bypassed": 1976,
+          "churn_per_step_layer": 0.0,
+          "miss_rate": 0.17034722222222223
+        }
+      },
+      {
+        "batch_size": 128,
+        "capacity": 12,
+        "normalized_capacity": 0.09375,
+        "lru": {
+          "hits": 0,
+          "misses": 20037,
+          "evictions": 19965,
+          "bypassed": 0,
+          "churn_per_step_layer": 33.275,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 2780,
+          "misses": 17257,
+          "evictions": 5803,
+          "bypassed": 11382,
+          "churn_per_step_layer": 9.671666666666667,
+          "miss_rate": 0.8612566751509707
+        }
+      },
+      {
+        "batch_size": 128,
+        "capacity": 25,
+        "normalized_capacity": 0.1953125,
+        "lru": {
+          "hits": 3193,
+          "misses": 16844,
+          "evictions": 16694,
+          "bypassed": 0,
+          "churn_per_step_layer": 27.823333333333334,
+          "miss_rate": 0.8406448071068523
+        },
+        "markov": {
+          "hits": 7775,
+          "misses": 12262,
+          "evictions": 4571,
+          "bypassed": 7541,
+          "churn_per_step_layer": 7.618333333333333,
+          "miss_rate": 0.611967859459999
+        }
+      },
+      {
+        "batch_size": 128,
+        "capacity": 38,
+        "normalized_capacity": 0.296875,
+        "lru": {
+          "hits": 9540,
+          "misses": 10497,
+          "evictions": 10269,
+          "bypassed": 0,
+          "churn_per_step_layer": 17.115,
+          "miss_rate": 0.523880820482108
+        },
+        "markov": {
+          "hits": 11668,
+          "misses": 8369,
+          "evictions": 2215,
+          "bypassed": 5926,
+          "churn_per_step_layer": 3.691666666666667,
+          "miss_rate": 0.417677297000549
+        }
+      },
+      {
+        "batch_size": 128,
+        "capacity": 51,
+        "normalized_capacity": 0.3984375,
+        "lru": {
+          "hits": 15044,
+          "misses": 4993,
+          "evictions": 4687,
+          "bypassed": 0,
+          "churn_per_step_layer": 7.8116666666666665,
+          "miss_rate": 0.2491890003493537
+        },
+        "markov": {
+          "hits": 13492,
+          "misses": 6545,
+          "evictions": 1422,
+          "bypassed": 4817,
+          "churn_per_step_layer": 2.37,
+          "miss_rate": 0.3266457054449269
+        }
+      },
+      {
+        "batch_size": 128,
+        "capacity": 64,
+        "normalized_capacity": 0.5,
+        "lru": {
+          "hits": 16862,
+          "misses": 3175,
+          "evictions": 2791,
+          "bypassed": 0,
+          "churn_per_step_layer": 4.651666666666666,
+          "miss_rate": 0.15845685481858562
+        },
+        "markov": {
+          "hits": 15107,
+          "misses": 4930,
+          "evictions": 693,
+          "bypassed": 3853,
+          "churn_per_step_layer": 1.155,
+          "miss_rate": 0.2460448170883865
+        }
+      },
+      {
+        "batch_size": 128,
+        "capacity": 76,
+        "normalized_capacity": 0.59375,
+        "lru": {
+          "hits": 18058,
+          "misses": 1979,
+          "evictions": 1523,
+          "bypassed": 0,
+          "churn_per_step_layer": 2.5383333333333336,
+          "miss_rate": 0.09876728053101762
+        },
+        "markov": {
+          "hits": 15671,
+          "misses": 4366,
+          "evictions": 283,
+          "bypassed": 3627,
+          "churn_per_step_layer": 0.4716666666666667,
+          "miss_rate": 0.2178968907521086
+        }
+      },
+      {
+        "batch_size": 128,
+        "capacity": 89,
+        "normalized_capacity": 0.6953125,
+        "lru": {
+          "hits": 18800,
+          "misses": 1237,
+          "evictions": 703,
+          "bypassed": 0,
+          "churn_per_step_layer": 1.1716666666666666,
+          "miss_rate": 0.061735788790737135
+        },
+        "markov": {
+          "hits": 16328,
+          "misses": 3709,
+          "evictions": 82,
+          "bypassed": 3093,
+          "churn_per_step_layer": 0.13666666666666666,
+          "miss_rate": 0.1851075510305934
+        }
+      },
+      {
+        "batch_size": 128,
+        "capacity": 102,
+        "normalized_capacity": 0.796875,
+        "lru": {
+          "hits": 19167,
+          "misses": 870,
+          "evictions": 258,
+          "bypassed": 0,
+          "churn_per_step_layer": 0.43,
+          "miss_rate": 0.043419673603832906
+        },
+        "markov": {
+          "hits": 16494,
+          "misses": 3543,
+          "evictions": 30,
+          "bypassed": 2936,
+          "churn_per_step_layer": 0.05,
+          "miss_rate": 0.17682287767629884
+        }
+      },
+      {
+        "batch_size": 128,
+        "capacity": 115,
+        "normalized_capacity": 0.8984375,
+        "lru": {
+          "hits": 19298,
+          "misses": 739,
+          "evictions": 51,
+          "bypassed": 0,
+          "churn_per_step_layer": 0.085,
+          "miss_rate": 0.036881768727853474
+        },
+        "markov": {
+          "hits": 16501,
+          "misses": 3536,
+          "evictions": 0,
+          "bypassed": 2934,
+          "churn_per_step_layer": 0.0,
+          "miss_rate": 0.17647352398063582
+        }
+      },
+      {
+        "batch_size": 128,
+        "capacity": 128,
+        "normalized_capacity": 1.0,
+        "lru": {
+          "hits": 19314,
+          "misses": 723,
+          "evictions": 0,
+          "bypassed": 0,
+          "churn_per_step_layer": 0.0,
+          "miss_rate": 0.03608324599490942
+        },
+        "markov": {
+          "hits": 16501,
+          "misses": 3536,
+          "evictions": 0,
+          "bypassed": 2934,
+          "churn_per_step_layer": 0.0,
+          "miss_rate": 0.17647352398063582
+        }
+      },
+      {
+        "batch_size": 256,
+        "capacity": 12,
+        "normalized_capacity": 0.09375,
+        "lru": {
+          "hits": 0,
+          "misses": 26312,
+          "evictions": 26240,
+          "bypassed": 0,
+          "churn_per_step_layer": 43.733333333333334,
+          "miss_rate": 1.0
+        },
+        "markov": {
+          "hits": 2336,
+          "misses": 23976,
+          "evictions": 7439,
+          "bypassed": 16465,
+          "churn_per_step_layer": 12.398333333333333,
+          "miss_rate": 0.9112192155670417
+        }
+      },
+      {
+        "batch_size": 256,
+        "capacity": 25,
+        "normalized_capacity": 0.1953125,
+        "lru": {
+          "hits": 78,
+          "misses": 26234,
+          "evictions": 26084,
+          "bypassed": 0,
+          "churn_per_step_layer": 43.473333333333336,
+          "miss_rate": 0.9970355731225297
+        },
+        "markov": {
+          "hits": 7371,
+          "misses": 18941,
+          "evictions": 7045,
+          "bypassed": 11746,
+          "churn_per_step_layer": 11.741666666666667,
+          "miss_rate": 0.7198616600790514
+        }
+      },
+      {
+        "batch_size": 256,
+        "capacity": 38,
+        "normalized_capacity": 0.296875,
+        "lru": {
+          "hits": 8218,
+          "misses": 18094,
+          "evictions": 17866,
+          "bypassed": 0,
+          "churn_per_step_layer": 29.776666666666667,
+          "miss_rate": 0.6876710246275464
+        },
+        "markov": {
+          "hits": 10830,
+          "misses": 15482,
+          "evictions": 6091,
+          "bypassed": 9163,
+          "churn_per_step_layer": 10.151666666666667,
+          "miss_rate": 0.5884007297050775
+        }
+      },
+      {
+        "batch_size": 256,
+        "capacity": 51,
+        "normalized_capacity": 0.3984375,
+        "lru": {
+          "hits": 13474,
+          "misses": 12838,
+          "evictions": 12532,
+          "bypassed": 0,
+          "churn_per_step_layer": 20.886666666666667,
+          "miss_rate": 0.4879142596533901
+        },
+        "markov": {
+          "hits": 14866,
+          "misses": 11446,
+          "evictions": 3845,
+          "bypassed": 7295,
+          "churn_per_step_layer": 6.408333333333333,
+          "miss_rate": 0.43501064153238067
+        }
+      },
+      {
+        "batch_size": 256,
+        "capacity": 64,
+        "normalized_capacity": 0.5,
+        "lru": {
+          "hits": 17777,
+          "misses": 8535,
+          "evictions": 8151,
+          "bypassed": 0,
+          "churn_per_step_layer": 13.585,
+          "miss_rate": 0.32437671024627546
+        },
+        "markov": {
+          "hits": 18365,
+          "misses": 7947,
+          "evictions": 1442,
+          "bypassed": 6121,
+          "churn_per_step_layer": 2.4033333333333333,
+          "miss_rate": 0.3020294922468835
+        }
+      },
+      {
+        "batch_size": 256,
+        "capacity": 76,
+        "normalized_capacity": 0.59375,
+        "lru": {
+          "hits": 22465,
+          "misses": 3847,
+          "evictions": 3391,
+          "bypassed": 0,
+          "churn_per_step_layer": 5.651666666666666,
+          "miss_rate": 0.14620705381574947
+        },
+        "markov": {
+          "hits": 19664,
+          "misses": 6648,
+          "evictions": 597,
+          "bypassed": 5595,
+          "churn_per_step_layer": 0.995,
+          "miss_rate": 0.2526603830951657
+        }
+      },
+      {
+        "batch_size": 256,
+        "capacity": 89,
+        "normalized_capacity": 0.6953125,
+        "lru": {
+          "hits": 23944,
+          "misses": 2368,
+          "evictions": 1834,
+          "bypassed": 0,
+          "churn_per_step_layer": 3.0566666666666666,
+          "miss_rate": 0.08999695956217696
+        },
+        "markov": {
+          "hits": 20317,
+          "misses": 5995,
+          "evictions": 270,
+          "bypassed": 5191,
+          "churn_per_step_layer": 0.45,
+          "miss_rate": 0.22784280936454848
+        }
+      },
+      {
+        "batch_size": 256,
+        "capacity": 102,
+        "normalized_capacity": 0.796875,
+        "lru": {
+          "hits": 24853,
+          "misses": 1459,
+          "evictions": 847,
+          "bypassed": 0,
+          "churn_per_step_layer": 1.4116666666666666,
+          "miss_rate": 0.05544998479781089
+        },
+        "markov": {
+          "hits": 20584,
+          "misses": 5728,
+          "evictions": 137,
+          "bypassed": 4979,
+          "churn_per_step_layer": 0.22833333333333333,
+          "miss_rate": 0.21769534813013075
+        }
+      },
+      {
+        "batch_size": 256,
+        "capacity": 115,
+        "normalized_capacity": 0.8984375,
+        "lru": {
+          "hits": 25437,
+          "misses": 875,
+          "evictions": 185,
+          "bypassed": 0,
+          "churn_per_step_layer": 0.30833333333333335,
+          "miss_rate": 0.033254788689571296
+        },
+        "markov": {
+          "hits": 20765,
+          "misses": 5547,
+          "evictions": 17,
+          "bypassed": 4842,
+          "churn_per_step_layer": 0.028333333333333332,
+          "miss_rate": 0.210816357555488
+        }
+      },
+      {
+        "batch_size": 256,
+        "capacity": 128,
+        "normalized_capacity": 1.0,
+        "lru": {
+          "hits": 25549,
+          "misses": 763,
+          "evictions": 0,
+          "bypassed": 0,
+          "churn_per_step_layer": 0.0,
+          "miss_rate": 0.028998175737306172
+        },
+        "markov": {
+          "hits": 20932,
+          "misses": 5380,
+          "evictions": 0,
+          "bypassed": 4677,
+          "churn_per_step_layer": 0.0,
+          "miss_rate": 0.20446944359987837
+        }
+      }
+    ]
+  }
+}

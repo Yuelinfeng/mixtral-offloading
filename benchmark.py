@@ -246,6 +246,14 @@ def main():
              print(f"Sample (Top-left 4x4):\n{mat[:4, :4]}")
         else:
              print("Similarity Matrix is None!")
+             
+        # --- [Stage 0] Export Markov Transition Graph ---
+        if hasattr(cache, 'transition_matrix'):
+             matrix_path = "markov_transition_matrix.pt"
+             torch.save(cache.transition_matrix.cpu(), matrix_path)
+             print(f"\n[Stage 0] 已成功将 32x8x8 时序转移矩阵导出至: {matrix_path}")
+             print("下一步：请运行 `python analyze_markov_graph.py` 来计算图的 SCCs 和谱间隙！")
+        # ------------------------------------------------
     except Exception as e:
         print(f"无法获取缓存统计信息: {e}")
 

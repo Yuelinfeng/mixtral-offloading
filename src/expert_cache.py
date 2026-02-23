@@ -189,7 +189,7 @@ class ExpertCache:
             pre_loaded_experts = deque([self.main_modules[info.index] for info in pre_loaded_infos])
 
             # begin loading experts into free buffers in background (via non-blocking copy)
-            infos_to_load = deque([info for info in infos if info.offloaded])
+            infos_to_load_queue = deque([info for info in infos if info.offloaded])
             
             # --- Aggressive Prefetching Logic ---
             prefetch_candidates = []
@@ -202,23 +202,39 @@ class ExpertCache:
                         if top_idx != req_idx and top_idx not in req_indices:
                             uid = (infos[0].uid[0], top_idx)
                             p_info = self.registered_experts[uid]
-                            if p_info.offloaded and p_info not in infos_to_load and p_info not in prefetch_candidates:
+                            if p_info.offloaded and p_info not in infos_to_load_queue and p_info not in prefetch_candidates:
                                 prefetch_candidates.append(p_info)
                     except Exception:
                         pass
-            infos_to_load.extend(prefetch_candidates)
             # ------------------------------------
             
             infos_in_loading = deque([])
             experts_in_loading = deque([])
-            window_size = min(len(self.device_expert_buffers),
-                              len(eviction_group.main_infos),
-                              len(infos_to_load))
-            for _ in range(window_size):
-                info_to_load = infos_to_load.popleft()
-                infos_in_loading.append(info_to_load)
-                experts_in_loading.append(
-                    self._swap(info_to_load, eviction_group.choose_expert_to_evict()))
+            bypassed_flags = deque([])
+            
+            def dispatch_load(info):
+                is_prefetch = info not in infos
+                if hasattr(eviction_group, 'admit') and not eviction_group.admit(info):
+                    if is_prefetch:
+                        return False # Don't prefetch bypassed experts
+                    infos_in_loading.append(info)
+                    experts_in_loading.append(self._stream_bypass(info))
+                    bypassed_flags.append(True)
+                    if hasattr(eviction_group, 'bypassed_count'): 
+                        eviction_group.bypassed_count += 1
+                else:
+                    infos_in_loading.append(info)
+                    experts_in_loading.append(self._swap(info, eviction_group.choose_expert_to_evict()))
+                    bypassed_flags.append(False)
+                return True
+
+            window_size = min(len(self.device_expert_buffers), len(infos_to_load_queue))
+            
+            dispatched_count = 0
+            while dispatched_count < window_size and len(infos_to_load_queue) > 0:
+                info_to_dispatch = infos_to_load_queue.popleft()
+                if dispatch_load(info_to_dispatch):
+                    dispatched_count += 1
 
             for info in infos:
                 if len(pre_loaded_infos) > 0 and info is pre_loaded_infos[0]:
@@ -226,25 +242,41 @@ class ExpertCache:
                     yield (info.uid, pre_loaded_experts.popleft())
                 elif len(infos_in_loading) > 0 and info is infos_in_loading[0]:
                     infos_in_loading.popleft()
-                    yield (info.uid, experts_in_loading.popleft())
-                    if len(infos_to_load) > 0:
-                        info_to_load = infos_to_load.popleft()
-                        infos_in_loading.append(info_to_load)
-                        experts_in_loading.append(
-                            self._swap(info_to_load, eviction_group.choose_expert_to_evict()))
+                    module = experts_in_loading.popleft()
+                    is_bypassed = bypassed_flags.popleft()
+                    
+                    yield (info.uid, module)
+                    
+                    if is_bypassed:
+                        # Return the streaming buffer back to the pool immediately!
+                        self.device_expert_buffers.append(module)
+                        
+                    while len(infos_to_load_queue) > 0:
+                        next_info = infos_to_load_queue.popleft()
+                        if dispatch_load(next_info):
+                            break
                 else:
                     raise RuntimeError("internal error: caching algorithm failed")
                     
             # --- Launch remaining prefetches ---
-            while len(infos_to_load) > 0:
-                info_to_load = infos_to_load.popleft()
+            for p_info in prefetch_candidates:
                 try:
-                    self._swap(info_to_load, eviction_group.choose_expert_to_evict())
+                    if hasattr(eviction_group, 'admit') and not eviction_group.admit(p_info):
+                        continue
+                    self._swap(p_info, eviction_group.choose_expert_to_evict())
                 except ValueError:
                     break
             # -----------------------------------
         finally:
             self.active = False
+
+    def _stream_bypass(self, info_to_load: ExpertInfo) -> nn.Module:
+        """Stream an offloaded expert without evicting a resident expert. (Admission Control Bypass)"""
+        t0 = time.perf_counter()
+        device_expert_buffer = self.device_expert_buffers.popleft()
+        device_expert_buffer.storage.copy_(self.offloaded_storages[info_to_load.index], non_blocking=True)
+        self.timers['t_stream_setup'] += time.perf_counter() - t0
+        return device_expert_buffer
 
     def _swap(self, info_to_load: ExpertInfo, info_to_evict: ExpertInfo) -> nn.Module:
         """Swap an offloaded expert (info_to_load) with an on-device expert (info_to_evict) return the loaded expert"""

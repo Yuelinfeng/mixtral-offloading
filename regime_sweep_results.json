@@ -1,0 +1,86 @@
+{
+  "128": {
+    "lru": {
+      "hits": 128,
+      "misses": 128,
+      "bypassed": 0,
+      "miss_rate": 0.5
+    },
+    "markov": {
+      "hits": 128,
+      "misses": 128,
+      "bypassed": 46,
+      "miss_rate": 0.5
+    }
+  },
+  "256": {
+    "lru": {
+      "hits": 128,
+      "misses": 128,
+      "bypassed": 0,
+      "miss_rate": 0.5
+    },
+    "markov": {
+      "hits": 128,
+      "misses": 128,
+      "bypassed": 42,
+      "miss_rate": 0.5
+    }
+  },
+  "512": {
+    "lru": {
+      "hits": 256,
+      "misses": 256,
+      "bypassed": 0,
+      "miss_rate": 0.5
+    },
+    "markov": {
+      "hits": 256,
+      "misses": 256,
+      "bypassed": 133,
+      "miss_rate": 0.5
+    }
+  },
+  "1024": {
+    "lru": {
+      "hits": 512,
+      "misses": 512,
+      "bypassed": 0,
+      "miss_rate": 0.5
+    },
+    "markov": {
+      "hits": 512,
+      "misses": 512,
+      "bypassed": 307,
+      "miss_rate": 0.5
+    }
+  },
+  "2048": {
+    "lru": {
+      "hits": 1024,
+      "misses": 1024,
+      "bypassed": 0,
+      "miss_rate": 0.5
+    },
+    "markov": {
+      "hits": 1024,
+      "misses": 1024,
+      "bypassed": 623,
+      "miss_rate": 0.5
+    }
+  },
+  "4096": {
+    "lru": {
+      "hits": 2047,
+      "misses": 2048,
+      "bypassed": 0,
+      "miss_rate": 0.5001221001221001
+    },
+    "markov": {
+      "hits": 2048,
+      "misses": 2047,
+      "bypassed": 1082,
+      "miss_rate": 0.4998778998778999
+    }
+  }
+}
